@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Container, Inject } from 'typedi';
+import { Container, Inject, Service } from 'typedi';
 import { buildSchema, ObjectType, Field, Query, Resolver } from 'type-graphql';
 import { ApolloServer } from 'apollo-server';
 
@@ -24,6 +24,7 @@ export class Album {
     public id!: number;
 }
 
+@Service()
 @Resolver(() => Album)
 export class AlbumController extends Controller {
     @Query(() => Album, { name: 'album' })
